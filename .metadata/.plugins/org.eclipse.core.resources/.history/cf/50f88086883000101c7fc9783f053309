@@ -1,0 +1,21 @@
+package step2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+/*
+ * optional의 용도
+ * */
+public class Stream03Optional {
+
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>(5);
+		Stream<Integer> stream = list.stream();
+		double a = stream.mapToInt(Integer :: intValue)
+			  .average()
+			  .getAsDouble();
+		
+	}
+
+}

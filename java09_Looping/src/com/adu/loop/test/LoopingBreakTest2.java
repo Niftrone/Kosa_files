@@ -1,0 +1,25 @@
+package com.adu.loop.test;
+
+// Bool 126
+// 1에서 100까지의 합을 구해서 출력
+
+public class LoopingBreakTest2 {
+	public static void main(String[] args) {
+		int sum = 0;
+		for (int i = 1; i < 101; i++) {
+			if( i % 2 == 1) {
+				sum += i;
+			}
+			
+//			if(sum >= 500) {
+//				sum -= i;
+//				break;
+//			}
+		}
+		System.out.println(sum);
+
+	}
+
+}
+
+// 1 ~ 100 반복

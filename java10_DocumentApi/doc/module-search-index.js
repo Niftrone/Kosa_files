@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"java10_DocumentApi"}];updateSearchResults();

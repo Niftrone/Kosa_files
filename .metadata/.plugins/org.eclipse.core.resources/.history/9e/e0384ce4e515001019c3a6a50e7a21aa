@@ -1,0 +1,39 @@
+package com.edu.service;
+
+import java.util.Date;
+
+public class Board {
+	public String title;
+	public String content;
+	public Date updateDate;
+	public int count;	
+	
+	public Writer writer;
+	
+	
+	public void setWriterInfo(Writer writer) {
+		this.writer = writer;
+	}
+	
+	public Writer getWriterInfo() {
+		return writer;
+	}
+	
+	public String getBoard() {
+		updateCount();
+		return title + content + updateDate + " " + count + " " + writer.name;
+	}
+	
+	public void setBoard(String title, String content, Date updateDate) {
+		this.title = title;
+		this.content = content;
+		this.updateDate = updateDate;
+
+	}
+	
+	public void updateCount() {
+		this.count ++;
+	}
+	
+	
+}

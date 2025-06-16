@@ -1,0 +1,31 @@
+package step2;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+/*
+ * optional의 용도
+ * */
+public class Stream03Optional {
+
+	public static void main(String[] args) {
+//		List<Integer> list = new ArrayList<>(5);
+		
+		//List안에 데이터가 없을경우 중간처리연산자를 가동시키면 NoSuchElementException 발생
+		//이런 경우 Optional이 필요하다
+//		Stream<Integer> stream = list.stream();
+//		double avg = stream.mapToInt(Integer :: intValue)
+//			  .average()
+//			  .getAsDouble();
+//		System.out.println(avg);
+
+		List<Integer> list = Arrays.asList(1,2,3,4,5);
+		Stream<Integer> stream = list.stream();
+		stream.mapToInt(Integer :: intValue)
+			  .average()
+			  .ifPresentOrElse(null, null);
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.adu.loop.test;
+/*
+  for(초기식; 조건문; 증감식;){}
+  
+  초기식;
+  while(조건문){
+   증감식;
+  }
+  */
+
+public class BasicLoopTest1 {
+	public static void main(String[] args) {
+		System.out.println("========= for ==========");
+		for (int i = 0; i < 10; i++) {
+			System.out.println(i);
+		}
+
+		System.out.println("========= while ==========");
+		int i = 10;
+		while (i > 0) {
+			System.out.println("while looping..." + i);
+			i--;
+		}
+		
+		System.out.println("========= do while ==========");
+		int j=10;
+		do {
+			System.out.println("do_while..." + j);
+			j--;
+		}while(j>0);
+	}
+}

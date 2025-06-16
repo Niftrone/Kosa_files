@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.kosta.service&apos; to &apos;com.kosa.service&apos;&#x0D;&#x0A;- Original project: &apos;workshop11&apos;&#x0D;&#x0A;- Original element: &apos;workshop11/src/com.kosta.service&apos;&#x0D;&#x0A;- Renamed element: &apos;workshop11/src/com.kosa.service&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.kosta.service&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.kosta.service" name="com.kosa.service" qualified="false" references="true" stamp="1745310359493" textual="false" version="1.0"/>
+</session>

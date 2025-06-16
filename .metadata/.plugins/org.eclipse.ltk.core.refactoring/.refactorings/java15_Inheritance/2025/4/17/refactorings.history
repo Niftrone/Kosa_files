@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 packages to &apos;java16_PolyMorphism/src&apos;&#x0D;&#x0A;- Original project: &apos;java15_Inheritance&apos;&#x0D;&#x0A;- Destination element: &apos;java16_PolyMorphism/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     java15_Inheritance/src/com.adu.parent&#x0D;&#x0A;     java15_Inheritance/src/com.adu.child&#x0D;&#x0A;     java15_Inheritance/src/com.adu.util" description="Copy packages" destination="=java16_PolyMorphism/src" element1="/src&lt;com.adu.parent" element2="/src&lt;com.adu.child" element3="/src&lt;com.adu.util" flags="589830" fragments="3" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1745370735640" version="1.0"/>
+</session>

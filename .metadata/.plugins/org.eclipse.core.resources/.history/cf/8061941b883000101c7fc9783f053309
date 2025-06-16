@@ -1,0 +1,12 @@
+package step2;
+/*
+ * optional의 용도
+ * */
+public class Stream03Optional {
+
+	public static void main(String[] args) {
+
+		
+	}
+
+}

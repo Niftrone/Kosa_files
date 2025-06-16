@@ -1,0 +1,176 @@
+package com.edu.service.impl;
+
+import com.edu.service.BookManager;
+import com.edu.vo.Book;
+import com.edu.vo.Magazine;
+import com.edu.vo.Novel;
+
+public class BookManagerImpl implements BookManager {
+
+	private static BookManagerImpl instance = new BookManagerImpl();
+	private static double ROMANCE_SALE = 0.9; 
+	private static double FANTAGE_SALE = 0.8; 
+	
+	private Book[] books = new Book[100];
+	private int bidx = 0;
+
+	private BookManagerImpl() {
+
+	}
+
+	public static BookManagerImpl instance() {
+		return instance;
+	}
+
+	@Override
+	public void insertBook(Book book) {
+		if (bidx < books.length) {
+			books[bidx++] = book;
+		} else {
+			System.out.println("공간이 부족합니다.");
+		}
+	}
+
+	@Override
+	public void deleteBook(int isbin) {
+		for (int i = 0; i < bidx; i++) {
+			if (books[i] != null && books[i].getIsbin() == isbin) {
+				for (int j = i; j < bidx - 1; j++) {
+					books[j] = books[j + 1];
+				}
+				books[bidx - 1] = null;
+				bidx--;
+				System.out.println(isbin + "번 책 삭제 완료");
+				return;
+			}
+		}
+		System.out.println("삭제할 책을 찾을 수 없습니다.");
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		for (int i = 0; bidx > i; i++) {
+			if (books[i].getIsbin() == book.getIsbin()) {
+				books[i] = book;
+				System.out.println(book.getTitle() + "의 책의 정보가 업데이트 되었습니다.");
+				return;
+			} else if (books[i] == null) {
+				System.out.println("수정할 책을 찾을 수 없습니다.");
+				return;
+			}
+		}
+		System.out.println("수정할 책을 찾을 수 없습니다.");
+	}
+
+	@Override
+	public Book getBook(int isbin) {
+		for (Book b : books) {
+			if (b.getIsbin() == isbin) {
+				return b;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Book[] getAllBook() {
+	    Book[] reBooks = new Book[bidx];
+	    for (int i = 0; i < bidx; i++) {
+	        reBooks[i] = books[i];
+	    }
+	    return reBooks;
+	}
+
+	@Override
+	public int getNumberOfBooks() {
+		return bidx;
+	}
+
+	@Override
+	public Book[] searchBookByTitle(String title) {
+	    int count = 0;
+	    for (int i = 0; i < bidx; i++) {
+	        if (books[i] != null && books[i].getTitle().equals(title)) {
+	            count++;
+	        }
+	    }
+
+	    Book[] findBooks = new Book[count];
+	    int idx = 0;
+
+	    for (int i = 0; i < bidx; i++) {
+	        if (books[i] != null && books[i].getTitle().equals(title)) {
+	            findBooks[idx++] = books[i];
+	        }
+	    }
+		return findBooks;
+	}
+
+	@Override
+	public Book[] searchBookByPrice(int min, int max) {
+		Book[] find = new Book[bidx];
+		int count = 0;
+		for (int i = 0; bidx > i; i++) {
+			if (books[i] != null && books[i].getPrice() >= min && books[i].getPrice() <= max) {
+				find[count++] = books[i];
+			}
+		}
+		
+		Book[] result = new Book[count];
+		System.arraycopy(find, 0, result, 0, count);
+		return result;
+	}
+
+	@Override
+	public double getPriceOfBooks(String mode) {
+		double totalSum = 0.0;
+		for (Book b : books) {
+			if(b == null) {
+				break;
+			}
+			totalSum += b.getPrice();
+		}
+		if (mode.equals("sum")) {
+			return totalSum;
+		} else if (mode.equals("avg")) {
+			return totalSum / bidx;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public void getEstimatedReadingTime() {
+		int time = 0;
+		for(Book b : books) {
+			if(b instanceof Novel) {
+				time = ((Novel) b).getPages() * 3;
+				System.out.println(b.getTitle()  + " 읽는 시간 : "+ time / 60 + "시간 " + time % 60 + "분");
+			}else if(b instanceof Magazine) {
+				time = (int) (((Magazine) b).getRead() * ((Magazine) b).getContentDensity() * 1.2);
+				System.out.println(b.getTitle()+ "읽는 시간 : " + time + "분");
+			}
+		}
+	}
+
+	@Override
+	public void bookSales() {
+		for(Book b : books) {
+			if(b instanceof Novel) {
+				switch (((Novel)b).getGenre()) {
+					case "판타지": 
+						b.setPrice(b.getPrice() * FANTAGE_SALE);
+						break;
+					case "로맨스": 
+						b.setPrice(b.getPrice() * ROMANCE_SALE);
+						break;
+					default:
+						System.out.println("할인하지 않습니다.");
+				}
+			}else if( b instanceof Magazine) {
+				System.out.println("잡지는 할인하지 않습니다.");
+			}
+		}
+	}
+
+}

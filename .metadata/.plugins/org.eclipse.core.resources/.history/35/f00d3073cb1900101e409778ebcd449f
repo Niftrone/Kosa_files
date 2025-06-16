@@ -1,0 +1,17 @@
+package com.adu.loop.test;
+/*
+  for(초기식; 조건문; 증감식;){}
+  
+  초기식;
+  while(조건문){
+   증감식;
+  }
+  */
+
+
+public class BasicLoopTest1 {
+	public static void main(String[] args) {
+		System.out.println("========= for ==========");
+		
+	}
+}
